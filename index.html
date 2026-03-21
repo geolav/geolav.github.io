@@ -21,315 +21,226 @@
     </div>
 </body>
 </html> -->
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Портфолио</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --ink: #111;
-      --paper: #f5f4f0;
-      --mid: #888;
-      --border: #ccc;
-      --accent: #222;
+      --bg: #f5f4f0;
+      --ink: #1a1a1a;
+      --mid: #6b6b6b;
+      --light: #d4d2cc;
     }
 
-    html { font-size: 16px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Courier Prime', 'Courier New', monospace;
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* ── NAV ── */
     nav {
-      border-bottom: 1px solid var(--border);
-      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid var(--ink);
+      padding: 18px 48px;
       display: flex;
-      align-items: baseline;
-      gap: 2.5rem;
-      position: sticky;
-      top: 0;
-      background: var(--paper);
-      z-index: 10;
+      justify-content: space-between;
+      align-items: center;
     }
 
     nav .logo {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      text-decoration: none;
-      color: var(--ink);
-      margin-right: auto;
+      color: var(--mid);
     }
+
+    nav ul { list-style: none; display: flex; gap: 36px; }
 
     nav a {
       text-decoration: none;
-      color: var(--mid);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.15s;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-    }
-
-    nav a:hover, nav a.active {
       color: var(--ink);
-      border-bottom-color: var(--ink);
-    }
-
-    /* ── MAIN ── */
-    main {
-      flex: 1;
-      max-width: 780px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 4rem 2.5rem 6rem;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 4rem;
-      padding-bottom: 4rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-text {}
-
-    .eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 1.2rem;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .subtitle {
-      font-size: 1rem;
-      color: var(--mid);
-      line-height: 1.7;
-      max-width: 42ch;
-    }
-
-    .cta-row {
-      margin-top: 2.5rem;
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.55rem 1.4rem;
-      border: 1px solid var(--ink);
-      text-decoration: none;
-      font-family: inherit;
       font-size: 0.8rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink);
-      background: transparent;
-      transition: background 0.15s, color 0.15s;
-      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
     }
 
-    .btn:hover { background: var(--ink); color: var(--paper); }
-    .btn.filled { background: var(--ink); color: var(--paper); }
+    nav a:hover, nav a.active { border-color: var(--ink); }
+
+    .hero {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 52px 48px 52px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.65;
+      max-width: 380px;
+      margin-bottom: 28px;
+    }
+
+    .hero-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .btn:hover { background: var(--ink); color: var(--bg); }
+    .btn.filled { background: var(--ink); color: var(--bg); }
     .btn.filled:hover { background: transparent; color: var(--ink); }
 
-    /* ── PHOTO PLACEHOLDER ── */
-    .photo-slot {
-      width: 160px;
-      height: 200px;
-      border: 1px solid var(--border);
-      background: #e8e6e1;
+    .hero-visual {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--mid);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
+      gap: 16px;
+      padding-top: 8px;
     }
 
-    .photo-slot img {
+    .photo-frame {
+      border: 1px solid var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      position: absolute;
-      inset: 0;
-      filter: grayscale(100%);
+      display: block;
+      filter: grayscale(100%) contrast(1.05);
     }
 
-    .photo-slot svg { opacity: 0.4; }
-
-    /* ── SECTION ── */
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 7px 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid);
-      margin-bottom: 2rem;
+      background: var(--bg);
+      border-top: 1px solid var(--light);
     }
 
-    .cards {
+    .photo-main { aspect-ratio: 4/5; }
+
+    .photo-row {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1px;
-      border: 1px solid var(--border);
-      margin-bottom: 4rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    .card {
-      padding: 1.8rem 1.5rem;
-      border-right: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
+    .photo-small { aspect-ratio: 1/1; }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--light);
+      margin: 0 48px;
+    }
+
+    footer {
+      padding: 22px 48px;
       display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: background 0.12s;
-    }
-
-    .card:last-child { border-right: none; }
-    .card:hover { background: #eae8e3; }
-
-    .card-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--light);
+      font-size: 0.7rem;
       color: var(--mid);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: var(--mid);
-      line-height: 1.5;
-    }
-
-    .card .arrow {
-      margin-top: auto;
-      font-size: 0.75rem;
       letter-spacing: 0.1em;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--mid);
-      letter-spacing: 0.08em;
-    }
-
-    @media (max-width: 580px) {
-      nav { gap: 1.4rem; padding: 1rem 1.2rem; }
-      main { padding: 2.5rem 1.2rem 4rem; }
-      .hero { grid-template-columns: 1fr; }
-      .photo-slot { width: 100%; height: 200px; }
-      h1 { font-size: 1.8rem; }
-      .cards { grid-template-columns: 1fr; }
-      .card { border-right: none; border-bottom: 1px solid var(--border); }
-      .card:last-child { border-bottom: none; }
-      footer { flex-direction: column; gap: 0.4rem; }
+    @media (max-width: 700px) {
+      nav { padding: 16px 20px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 20px; gap: 40px; }
+      .hero-visual { order: -1; }
+      hr.divider { margin: 0 20px; }
+      footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">GeoLav</a>
-  <a href="/" class="active">Главная</a>
-  <a href="/resume/">Резюме</a>
-  <a href="/projects/">Проекты</a>
+  <span class="logo">geolav</span>
+  <ul>
+    <li><a href="/" class="active">Главная</a></li>
+    <li><a href="/resume/">Резюме</a></li>
+    <li><a href="/projects/">Проекты</a></li>
+  </ul>
 </nav>
 
-<main>
-  <section class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">Портфолио</p>
-      <h1>Программист.<br>Человек.</h1>
-      <p class="subtitle">
-        Добро пожаловать. Здесь собраны мои проекты,
-        опыт и навыки — всё, что я делаю руками и головой.
-      </p>
-      <div class="cta-row">
-        <a href="/resume/" class="btn filled">Резюме</a>
-        <a href="/projects/" class="btn">Проекты</a>
+<main class="hero">
+  <div class="hero-text">
+    <h1>geolav</h1>
+    <p class="hero-desc">
+      Программист. Здесь лежат резюме и проекты.
+    </p>
+    <div class="hero-links">
+      <a class="btn filled" href="/resume/">Резюме</a>
+      <a class="btn" href="/projects/">Проекты</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="photo-frame photo-main">
+      <!-- ЗАМЕНИТЕ src на ваше фото -->
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="Портрет" />
+      <span class="photo-caption">Фото / 2024</span>
+    </div>
+    <div class="photo-row">
+      <div class="photo-frame photo-small">
+        <!-- ЗАМЕНИТЕ src на ваше фото -->
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80&auto=format&fit=crop" alt="Код" />
+        <span class="photo-caption">Код</span>
+      </div>
+      <div class="photo-frame photo-small">
+        <!-- ЗАМЕНИТЕ src на ваше фото -->
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80&auto=format&fit=crop" alt="Проекты" />
+        <span class="photo-caption">Проекты</span>
       </div>
     </div>
-
-    <!-- ФОТО — замените src на реальное фото -->
-    <div class="photo-slot">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gatto_europeo4.jpg/800px-Gatto_europeo4.jpg"
-        alt="Фото"
-        onerror="this.style.display='none'"
-      />
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-      </svg>
-      <span>Фото</span>
-    </div>
-  </section>
-
-  <p class="section-label">Разделы</p>
-  <div class="cards">
-    <a href="/resume/" class="card">
-      <span class="card-num">01</span>
-      <h3>Резюме</h3>
-      <p>Опыт работы, навыки и образование.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a href="/projects/" class="card">
-      <span class="card-num">02</span>
-      <h3>Проекты</h3>
-      <p>Docker, боты, сайты и всё остальное.</p>
-      <span class="arrow">→</span>
-    </a>
   </div>
 </main>
 
+<hr class="divider">
+
 <footer>
-  <span>geolav.github.io</span>
-  <span>2026</span>
+  <span>© 2024 Georgiy Lavrentev </span>
 </footer>
 
 </body>
