@@ -522,7 +522,7 @@
         searchResultPosts: []
     };
 
-    const API_BASE = 'https://came-vsnet-screen-merge.trycloudflare.com/';
+    const API_BASE = 'https://came-vsnet-screen-merge.trycloudflare.com';
     let effectiveTgId = '';
     let tg = null;
 
@@ -609,8 +609,7 @@
     async function apiCall(endpoint, method = 'GET', body = null) {
         if (!effectiveTgId) throw new Error('No Telegram ID');
 
-        // const url = `/api${endpoint}${endpoint.includes('?') ? '&' : '?'}tg_id=${encodeURIComponent(effectiveTgId)}`;
-        const url = `${API_BASE}/api${endpoint}${endpoint.includes('?') ? '&' : '?'}tg_id=...`;
+        const url = `${API_BASE}/api${endpoint}${endpoint.includes('?') ? '&' : '?'}tg_id=${encodeURIComponent(effectiveTgId)}`;
         const options = {
             method,
             headers: { 'Content-Type': 'application/json' }
