@@ -1,0 +1,18 @@
+<svg width="100%" viewBox="0 0 680 392" xmlns="http://www.w3.org/2000/svg">
+  
+
+  <rect width="680" height="382" fill="#1e2128" style="fill:rgb(30, 33, 40);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Bubble shape: rounded rect -->
+  <rect x="270" y="120" width="140" height="90" rx="18" fill="#f0ede6" style="fill:rgb(240, 237, 230);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- Bubble tail -->
+  <polygon points="290,210 275,232 310,210" fill="#f0ede6" style="fill:rgb(240, 237, 230);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Three lines inside bubble (suggesting text/thoughts) -->
+  <rect x="290" y="143" width="80" height="6" rx="3" fill="#1e2128" style="fill:rgb(30, 33, 40);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="290" y="157" width="60" height="6" rx="3" fill="#1e2128" opacity="0.5" style="fill:rgb(30, 33, 40);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="290" y="171" width="72" height="6" rx="3" fill="#1e2128" opacity="0.3" style="fill:rgb(30, 33, 40);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.3;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Wordmark -->
+  <text x="340" y="278" text-anchor="middle" font-size="22" font-weight="700" fill="#f0ede6" letter-spacing="0.18em" style="fill:rgb(240, 237, 230);stroke:none;color:rgb(251, 251, 254);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Courier Prime&quot;, &quot;Courier New&quot;, monospace;font-size:22px;font-weight:700;text-anchor:middle;dominant-baseline:auto">misli</text>
+</svg>
