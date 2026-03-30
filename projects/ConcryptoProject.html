@@ -55,7 +55,6 @@
 
     nav a:hover, nav a.active { border-color: var(--ink); }
 
-    /* ── ARTICLE ── */
     article {
       max-width: 680px;
       margin: 0 auto;
@@ -115,7 +114,6 @@
       margin-bottom: 32px;
     }
 
-    /* ── BODY TEXT ── */
     .body p {
       font-size: 0.92rem;
       line-height: 1.75;
@@ -206,21 +204,25 @@
 
   <a class="back" href="/projects/">← Проекты</a>
 
-  <div class="meta">Проект 001</div>
-  <h1>FAT-manager</h1>
+  <div class="meta">Проект -</div>
+  <h1>Concrypto (Concurrency cryptography)</h1>
 
   <div class="tags">
-    <span class="tag">C/C++</span>
-    <span class="tag">QT</span>
+    <span class="tag">Go</span>
+    <span class="tag">AES-GCM</span>
+    <span class="tag">PCI-DSS</span>
   </div>
 
   <hr>
 
   <div class="body">
 
+    <h2>Легенда</h2>
     <p>
-      Написание парсера для файловых систем Fat16 и Fat32. Оформление в виде интерфейса по аналогии с известным Far Manager - двусторонний файловый интерфейс, где слева 
-      локальное файловое хранилище, а справа - файловая система fat16 или fat32.
+      Вы работаете в большом банке. В этом банке есть хранилище банковских карт ваших пользователей. Очевидно, что хранить и передавать банковские карты в открытом виде опасно, поэтому их шифруют.
+      Более того, есть стандарт [PCI-DSS](https://ru.wikipedia.org/wiki/PCI_DSS), который регламентирует дополнительные правила безопасности для платёжных карт.
+      В том числе иногда нужно ротировать ключи шифрования в вашем хранилище, чтобы повысить безопасностьза счёт ограничения потенциального ущерба в случае компрометации ключа.
+      В рамках этого задания вам предстоит реализовать функцию для многопоточного шифрования карт.
     </p>
 
     <figure class="photo">
