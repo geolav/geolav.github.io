@@ -213,29 +213,32 @@
     <span class="tag">protobuf</span>
     <span class="tag">embed</span>
     <span class="tag">postreSQL</span>
+    <span class="tag">goose</span>
   </div>
 
   <hr>
 
   <div class="body">
 
-    <h2>Легенда</h2>
+    <h2>Предыстория</h2>
     <p>
-      Вы работаете в большом банке. В этом банке есть хранилище банковских карт ваших пользователей. Очевидно, что хранить и передавать банковские карты в открытом виде опасно, поэтому их шифруют.
-      Более того, есть стандарт PCI-DSS, который регламентирует дополнительные правила безопасности для платёжных карт.
-      В том числе иногда нужно ротировать ключи шифрования в вашем хранилище, чтобы повысить безопасность за счёт ограничения потенциального ущерба в случае компрометации ключа.
-      В рамках этого задания вам предстоит реализовать функцию для многопоточного шифрования карт.
+      Вы работаете в большом маркетплейсе Igoroutine Shop. За хорошую работу вас повысили и расширили зону ответственности, теперь в вашу юрисдикцию входит платформа электронной коммерции.
+      Вы собрали функциональные требования и спроектировали два сервиса: Cart — управление корзиной пользователя; Logistics and Order Management System (LOMS) — логистика и управление заказами
+
     </p>
 
-    <!-- <figure class="photo">
-      <img src="misliNewsScreen.png" alt="Лента" />
+    <figure class="photo">
+      <img src="E-commerceScreen1.png" alt="Лента" />
       <figcaption>Интерфейс</figcaption>
-    </figure> -->
+    </figure>
 
     <h2>Что сделано</h2>
 
     <p>
-      Использовал в работе библиотеки <code>crypto/aes</code>, <code>crypto/cipher</code>, <code>crypto/rand</code> и <code>encoding/hex</code>. Также (как и во всех последующих проектах с многопоточной реализацией пользовался библиотекой <code>sync</code>.
+       Использование Clean Architecture. Использование UML-диаграмм для основных сценариев в построении архитектуры.
+      Покрытие кода юнит-тестами и генерация моков.
+      Добавлен сервис notifications, который на текущем этапе пересылает статус заказа по URL'у из переменной окружения.
+      Поддержание архитектурного паттерна outbox.
     </p>
 
     <!-- <p>
@@ -254,15 +257,25 @@
       </figure>
     </div> -->
 
-    <!-- <figure class="photo">
-        <img src="misliCommentsScreen.png" alt="Docker" />
-        <figcaption>Комментарии</figcaption>
-    </figure> -->
+    <figure class="photo">
+        <img src="E-commerceScreen2.png" alt="Docker" />
+        <figcaption>Корзина</figcaption>
+    </figure>
+
+    <figure class="photo">
+        <img src="E-commerceScreen3.png" alt="Docker" />
+        <figcaption>Заказ</figcaption>
+    </figure>
+
+    <figure class="photo">
+        <img src="E-commerceScreen4.png" alt="Docker" />
+        <figcaption>Оплата</figcaption>
+    </figure>
 
     <h2>Сложности</h2>
 
     <p>
-      -
+      Синхронизация миграций БД между собой. Покрытие тестами. Поддержание зависимостей, которые должны быть в Clean Architecture. Настройка паттерна outbox.
     </p>
 
     <h2>Ссылки</h2>
