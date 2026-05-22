@@ -244,29 +244,49 @@
     <h2>Что было сделано?</h2>
 
     <p>
-      Использовал в работе библиотеки <code>crypto/aes</code>, <code>crypto/cipher</code>, <code>crypto/rand</code> и <code>encoding/hex</code>. Также (как и во всех последующих проектах с многопоточной реализацией пользовался библиотекой <code>sync</code>.
+      Backend приложения был полностью реализован на Go с использованием архитектурного подхода Clean Architecture. 
+      Проект разделён на слои transport / service / repository, что позволило изолировать бизнес-логику от работы с HTTP, WebSocket и базой данных.
     </p>
-
-    <!-- <p>
-      Написаны скрипты на сервере для более удобной работы с бэкэндом проекта (запуск всего приложения, запуск элементов по отдельности, запуск докер-контейнера с базой данных PostgreSQL и тд.)
-    </p> -->
-
-    <!-- Два фото рядом -->
-    <!-- <div class="photo-row">
-      <figure class="photo">
-        <img src="misliCommentsScreen.png" alt="Docker" />
-        <figcaption>Комментарии</figcaption>
-      </figure>
-      <figure class="photo">
-        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80&auto=format&fit=crop" alt="Nginx" />
-        <figcaption>Nginx конфиг</figcaption>
-      </figure>
-    </div> -->
 
     <figure class="photo">
         <img src="screenshots/QEasyScreen2.png" alt="Docker" />
         <figcaption>Комментарии</figcaption>
     </figure>
+
+        
+    <p>
+      Для HTTP API использовался фреймворк <code>Gin</code>. 
+      Реализованы REST endpoints для регистрации и авторизации пользователей, управления квизами, комнатами, вопросами и статистикой.
+    </p>
+    
+    <p>
+      Для авторизации была реализована JWT-аутентификация с middleware-проверкой токенов и разграничением ролей участников и организаторов.
+    </p>
+    
+    <p>
+      Взаимодействие участников во время игры реализовано через WebSocket. 
+      Сервер поддерживает комнаты квизов, подключение игроков по коду, синхронную отправку вопросов всем участникам и получение ответов в режиме реального времени.
+    </p>
+    
+    <p>
+      Для хранения данных использовался PostgreSQL. 
+      Были реализованы таблицы пользователей, квизов, вопросов, игровых комнат, результатов и истории участия. 
+      Работа с базой данных организована через repository-слой с разделением SQL-логики от основной бизнес-логики приложения.
+    </p>
+    
+    <p>
+      В проекте использовались библиотеки <code>crypto/aes</code>, <code>crypto/cipher</code>, 
+      <code>crypto/rand</code>, <code>encoding/hex</code> для работы с шифрованием и безопасной обработкой данных. 
+      Для конкурентного доступа и многопоточной логики активно использовался пакет <code>sync</code>.
+    </p>
+    
+    <p>
+      Также была реализована система подсчёта результатов, хранения истории игр и формирования статистики участников после завершения квиза.
+    </p>
+    
+    <p>
+      Отдельное внимание уделялось обработке ошибок, валидации входных данных и стабильности WebSocket-соединений при одновременном подключении большого количества участников.
+    </p>
 
     <figure class="photo">
         <img src="screenshots/QEasyScreen3.png" alt="Docker" />
@@ -285,16 +305,6 @@
 
     <figure class="photo">
         <img src="screenshots/QEasyScreen6.png" alt="Docker" />
-        <figcaption>Комментарии</figcaption>
-    </figure>
-
-    <figure class="photo">
-        <img src="screenshots/QEasyScreen7.png" alt="Docker" />
-        <figcaption>Комментарии</figcaption>
-    </figure>
-
-    <figure class="photo">
-        <img src="screenshots/QEasyScreen8.png" alt="Docker" />
         <figcaption>Комментарии</figcaption>
     </figure>
 
