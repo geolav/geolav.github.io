@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Concrypto — geolav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --ink: #1a1a1a;
+      --mid: #6b6b6b;
+      --light: #d4d2cc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--ink);
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--mid);
+    }
+
+    nav ul { list-style: none; display: flex; gap: 36px; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    nav a:hover, nav a.active { border-color: var(--ink); }
+
+    article {
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 52px 48px 80px;
+    }
+
+    .back {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 36px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .back:hover { color: var(--ink); border-color: var(--ink); }
+
+    .meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 32px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--light);
+      padding: 3px 8px;
+      color: var(--mid);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--light);
+      margin-bottom: 32px;
+    }
+
+    .body p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .body h2 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+
+    .body a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .body a:hover { color: var(--mid); }
+
+    .photo {
+      margin: 32px 0;
+      border: 1px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      display: block;
+    }
+
+    .photo figcaption {
+      padding: 7px 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-top: 1px solid var(--light);
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .photo-row .photo {
+      margin: 0;
+    }
+
+    footer {
+      padding: 22px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--light);
+      font-size: 0.7rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      article { padding: 36px 20px 60px; }
+      .photo-row { grid-template-columns: 1fr; }
+      footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">geolav</span>
+  <ul>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/resume/">Резюме</a></li>
+    <li><a href="/projects/" class="active">Проекты</a></li>
+  </ul>
+</nav>
+
+<article>
+
+  <a class="back" href="/projects/">← Проекты</a>
+
+  <div class="meta">Проект -</div>
+  <h1>Concrypto (Concurrency cryptography)</h1>
+
+  <div class="tags">
+    <span class="tag">Go</span>
+    <span class="tag">Generics</span>
+    <span class="tag">Data structures</span>
+    <span class="tag">LFU cache</span>
+    <span class="tag">Linked list</span>
+    <span class="tag">Memory optimization</span>
+  </div>
+
+  <hr>
+
+  <div class="body">
+
+    <h2>Что сделано</h2>
+
+    <h2>Что сделано</h2>
+    
+    <p>
+      Реализован LFU-кэш на Go с поддержкой операций <code>Get</code> и <code>Put</code>
+      за <code>O(1)</code> без амортизации. В основе реализации используется
+      собственная система frequency buckets для хранения элементов по частоте использования.
+    </p>
+  
+    <p>
+      Реализован eviction policy по алгоритму <code>LFU (Least Frequently Used)</code>
+      с дополнительным <code>LRU tie-breaking</code>: при одинаковой частоте использования
+      удаляется элемент, который использовался наиболее давно.
+    </p>
+    
+    <p>
+      В проекте использованы Go generics
+      (<code>K comparable</code>, <code>V any</code>),
+      благодаря чему кэш поддерживает работу с произвольными типами ключей и значений
+      без потери типобезопасности.
+    </p>
+    
+    <p>
+      Особое внимание уделялось производительности и управлению памятью.
+      Для уменьшения количества аллокаций реализован собственный object pool
+      для переиспользования cache nodes, что позволяет снижать нагрузку на garbage collector
+      при интенсивной работе кэша.
+    </p>
+    
+    <p>
+      Перемещение элементов между frequency buckets реализовано без создания новых нод:
+      элементы linked list переиспользуются и переносятся между списками через detach/push-механизм,
+      что минимизирует количество дополнительных указателей и операций выделения памяти.
+    </p>
+    
+    <p>
+      Дополнительно реализован итератор <code>All()</code>,
+      возвращающий элементы в порядке убывания частоты использования.
+      При одинаковой частоте элементы сортируются по принципу
+      most recently used first.
+    </p>
+
+  
+    <h2>Ссылки</h2>
+
+    <p>
+      Репозиторий с кодом (предоставляется лично по просьбе, тк по правилам курса распространение этого репозитория запрещено)
+      <a href="" target="_blank" rel="noopener">**</a>
+    </p>
+
+  </div>
+
+</article>
+
+<footer>
+  <span>© 2026 Georgiy Lavrentev </span>
+</footer>
+
+</body>
+</html>
