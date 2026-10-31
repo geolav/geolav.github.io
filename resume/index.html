@@ -127,6 +127,14 @@
       margin-bottom: 28px;
     }
 
+    .name-line {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-top: -18px;
+      margin-bottom: 32px;
+    }
+
     .section {
       margin-bottom: 44px;
     }
@@ -146,6 +154,10 @@
       grid-template-columns: 120px 1fr;
       gap: 16px;
       margin-bottom: 20px;
+    }
+
+    .entry-wide {
+      grid-template-columns: 1fr;
     }
 
     .entry-date {
@@ -175,6 +187,34 @@
       color: var(--mid);
       line-height: 1.65;
     }
+
+    .entry-desc ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .entry-desc li {
+      margin-bottom: 6px;
+    }
+
+    .entry-desc p + p {
+      margin-top: 8px;
+    }
+
+    .entry-link {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 1px;
+      transition: color 0.18s;
+    }
+
+    .entry-link:hover { color: var(--mid); }
 
     .skills-grid {
       display: flex;
@@ -215,7 +255,7 @@
       width: 100%;
       padding: 52px 48px 32px;
     }
-    
+
     .contacts h2 {
       font-size: 1rem;
       font-weight: 700;
@@ -224,42 +264,42 @@
       margin-bottom: 28px;
       color: var(--ink);
     }
-    
+
     .contacts-content {
       display: flex;
       gap: 48px;
       flex-wrap: wrap;
     }
-    
+
     .contact-item {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    
+
     .contact-label {
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid);
     }
-    
+
     .contact-value {
       font-size: 0.9rem;
       text-decoration: none;
       color: var(--ink);
       transition: opacity 0.2s;
     }
-    
+
     .contact-value:hover {
       opacity: 0.7;
     }
-    
+
     @media (max-width: 700px) {
       .contacts {
         padding: 40px 20px 24px;
       }
-      
+
       .contacts-content {
         gap: 24px;
         flex-direction: column;
@@ -303,7 +343,7 @@
       </div>
       <div class="info-item">
         <div class="info-label">Специализация</div>
-        <div class="info-val">Backend / DevOps</div>
+        <div class="info-val">Backend / ML</div>
       </div>
       <div class="info-item">
         <div class="info-label">GitHub</div>
@@ -313,16 +353,24 @@
   </aside>
 
   <div class="content">
-    <h1>Резюме</h1>
+    <h1>Георгий Лаврентьев</h1>
+    <p class="name-line">
+      yegor.lavrentyev@yandex.ru · egorlavr2006@gmail.com · t.me/efnms · github.com/geolav
+    </p>
 
     <div class="section">
-      <div class="section-title">Опыт работы</div>
-
-      <div class="entry">
-        <span class="entry-date"> н.в.</span>
+      <div class="section-title">Профиль</div>
+      <div class="entry entry-wide">
         <div class="entry-body">
-          <div class="entry-title">Вакантная должность</div>
-          <div class="entry-desc">Буду рад рассмотреть должность в вашей компании.</div>
+          <div class="entry-desc">
+            <p>
+              Студент 3-го курса ИТМО по направлению «Прикладная математика и информатика».
+              Пишу backend-сервисы на Python, Go и Java; также изучаю машинное обучение и анализ
+              данных с Python. Опыт: Go - 1 год, Python - 2 года, Java - 2 года (преимущественно
+              учебная практика). Работал с REST/gRPC API, PostgreSQL и Kafka; интересуюсь
+              алгоритмами, конкурентностью и структурами данных.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -331,62 +379,184 @@
       <div class="section-title">Образование</div>
 
       <div class="entry">
-        <span class="entry-date">2024 - ...</span>
+        <span class="entry-date">2024 - н.в.</span>
         <div class="entry-body">
-          <div class="entry-title">Кафедра КТ. Прикладная математика и информатика.</div>
+          <div class="entry-title">Прикладная математика и информатика</div>
           <div class="entry-sub">Университет ИТМО</div>
-          <div class="entry-desc">Программная инженерия, алгоритмы, системное программирование.</div>
+          <div class="entry-desc">
+            <p>Программная инженерия, алгоритмы, системное программирование.</p>
+            <p>Дополнительное обучение: сейчас прохожу курс по Python от Школы анализа данных Яндекса (ШАД).</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">Навыки</div>
-      <!-- <div class="skills-grid">
-        <span class="skill-tag">Go</span>
-        <span class="skill-tag">Java</span>  
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">C/C++ (so so)</span>
-        <span class="skill-tag">gRPC, Protobuf</span>  
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">REST API</span>
-        <span class="skill-tag">PostgreSQL</span>  
-        <span class="skill-tag">Telegram Bot API</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">QT</span>  
-      </div> -->
+      <div class="section-title">Опыт</div>
+
       <div class="entry">
-        <span class="entry-date">Languages</span>
+        <span class="entry-date">—</span>
+        <div class="entry-body">
+          <div class="entry-title">Поддержка учебного процесса на курсе Go</div>
+          <div class="entry-sub">ИТМО</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Разбирал со студентами практические примеры, поясняя особенности языка и поведение кода.</li>
+              <li>Помогал студентам выстраивать план решения и проверять логику на каждом этапе разработки.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Ключевые проекты</div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">E-commerce microservice</div>
+          <div class="entry-sub">Go, gRPC, Protobuf, PostgreSQL, Kafka, Docker</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Разработал три Go-сервиса (Cart, LOMS, Notifications) с разделением слоёв по Clean Architecture.</li>
+              <li>Реализовал gRPC/Protobuf-взаимодействие и публикацию событий в Kafka через Transactional Outbox; добавил миграции PostgreSQL, модульные тесты с генерацией моков и Docker-окружение.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/E-commerceProject.html">Подробнее →</a>
+        </div>
+      </div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">QEasy App (VK Education)</div>
+          <div class="entry-sub">Go, Gin, WebSocket, PostgreSQL, REST API, JWT</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Реализовал REST API на Gin, JWT-аутентификацию с разделением ролей и хранение данных в PostgreSQL.</li>
+              <li>Разработал WebSocket-квизы в реальном времени с синхронизацией комнат и ответов участников.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/QEasyAppProject.html">Подробнее →</a>
+        </div>
+      </div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">Linear Methods for Pulsar Classification</div>
+          <div class="entry-sub">Python, NumPy, pandas, Matplotlib</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Реализовал Ridge Regression и линейные классификаторы с mini-batch gradient descent; исследовал функции потерь и регуляризацию.</li>
+              <li>Оценивал качество классификации при дисбалансе классов с помощью Precision, Recall и F1-score.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/PulsarClassificationProject.html">Подробнее →</a>
+        </div>
+      </div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">Concrypto (Concurrency cryptography)</div>
+          <div class="entry-sub">Go, AES-GCM, AEAD, Goroutines</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Реализовал AES-GCM-шифрование с уникальными nonce и AAD для защиты целостности данных и метаданных.</li>
+              <li>Добавил настраиваемый пул воркеров для последовательной и конкурентной обработки, а также ротацию ключей.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/ConcryptoProject.html">Подробнее →</a>
+        </div>
+      </div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">LFU Cache</div>
+          <div class="entry-sub">Go, Generics, Data Structures</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Реализовал LFU-кэш с операциями Get/Put за O(1) и LRU-разрешением равенства частот.</li>
+              <li>Использовал собственные двусвязные списки, generics и object pool для повторного использования узлов.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/LFUCacheProject.html">Подробнее →</a>
+        </div>
+      </div>
+
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-title">FAT-manager</div>
+          <div class="entry-sub">C/C++, Qt</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Реализовал парсер образов файловых систем FAT16 и FAT32.</li>
+              <li>Создал двухпанельный интерфейс на Qt для работы с локальными файлами и образом FAT.</li>
+            </ul>
+          </div>
+          <a class="entry-link" href="/projects/FATManagerProject.html">Подробнее →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Хакатоны и достижения</div>
+      <div class="entry entry-wide">
+        <div class="entry-body">
+          <div class="entry-desc">
+            <p>Участвовал в трёх командных хакатонах; в одном из них команда заняла призовое место.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Основные технологии</div>
+
+      <div class="entry">
+        <span class="entry-date">Языки</span>
         <div class="skills-grid">
           <span class="skill-tag">Go</span>
-          <span class="skill-tag">Java</span>  
           <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
           <span class="skill-tag">C/C++</span>
         </div>
       </div>
       <div class="entry">
-        <span class="entry-date">Frameworks</span>
+        <span class="entry-date">Backend</span>
         <div class="skills-grid">
-          <span class="skill-tag">gRPC</span>
-          <span class="skill-tag">ProtoBuf</span>
-          <span class="skill-tag">Gin</span>
-          <span class="skill-tag">WebSocket</span>
-          <span class="skill-tag">JWT Auth</span>
-          <span class="skill-tag">Kafka</span>
-          <span class="skill-tag">Telegram Bot API</span>
-          <span class="skill-tag">PostgreSQL</span>
           <span class="skill-tag">REST API</span>
+          <span class="skill-tag">gRPC</span>
+          <span class="skill-tag">Protocol Buffers</span>
+          <span class="skill-tag">WebSocket</span>
           <span class="skill-tag">Clean Architecture</span>
         </div>
       </div>
       <div class="entry">
-        <span class="entry-date">Dev. tools</span>
+        <span class="entry-date">Данные и инфраструктура</span>
         <div class="skills-grid">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Kafka</span>
           <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Git</span>  
+          <span class="skill-tag">Git</span>
           <span class="skill-tag">Linux</span>
-          <span class="skill-tag">QT</span>
+          <span class="skill-tag">systemd</span>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-date">ML и алгоритмы</span>
+        <div class="skills-grid">
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Структуры данных</span>
+          <span class="skill-tag">Конкурентность</span>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-date">Тестирование</span>
+        <div class="skills-grid">
+          <span class="skill-tag">Модульные тесты</span>
+          <span class="skill-tag">Генерация моков</span>
         </div>
       </div>
     </div>
@@ -415,7 +585,7 @@
       <a href="https://github.com/geolav" target="_blank" class="contact-value">github.com/geolav</a>
     </div>
   </div>
-</section>  
+</section>
 
 <section class="contacts">
   <h2>Файлы</h2>
@@ -429,7 +599,7 @@
       <a href="georgiy_lavrentev_resume_en.pdf" class="contact-value">resume_en</a>
     </div>
   </div>
-</section>    
+</section>
 
 <footer>
   <span>© 2026 Georgiy Lavrentev </span>
