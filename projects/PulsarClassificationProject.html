@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linear Methods for Pulsar Classification — geolav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --ink: #1a1a1a;
+      --mid: #6b6b6b;
+      --light: #d4d2cc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--ink);
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--mid);
+    }
+
+    nav ul { list-style: none; display: flex; gap: 36px; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    nav a:hover, nav a.active { border-color: var(--ink); }
+
+    article {
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 52px 48px 80px;
+    }
+
+    .back {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 36px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .back:hover { color: var(--ink); border-color: var(--ink); }
+
+    .meta {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 32px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--light);
+      padding: 3px 8px;
+      color: var(--mid);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--light);
+      margin-bottom: 32px;
+    }
+
+    .body p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .body h2 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+
+    .body a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .body a:hover { color: var(--mid); }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 8px;
+      font-size: 0.8rem;
+    }
+
+    .results-table th, .results-table td {
+      border: 1px solid var(--light);
+      padding: 8px 10px;
+      text-align: right;
+    }
+
+    .results-table th:first-child, .results-table td:first-child { text-align: left; }
+
+    .results-table th {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 700;
+    }
+
+    .photo {
+      margin: 32px 0;
+      border: 1px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      display: block;
+      background: #ffffff;
+    }
+
+    .photo figcaption {
+      padding: 7px 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-top: 1px solid var(--light);
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .photo-row .photo {
+      margin: 0;
+    }
+
+    footer {
+      padding: 22px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--light);
+      font-size: 0.7rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      article { padding: 36px 20px 60px; }
+      .photo-row { grid-template-columns: 1fr; }
+      .results-table { font-size: 0.7rem; }
+      .results-table th, .results-table td { padding: 6px 6px; }
+      footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">geolav</span>
+  <ul>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/resume/">Резюме</a></li>
+    <li><a href="/projects/" class="active">Проекты</a></li>
+  </ul>
+</nav>
+
+<article>
+
+  <a class="back" href="/projects/">← Проекты</a>
+
+  <div class="meta">Проект -</div>
+  <h1>Linear Methods for Pulsar Classification</h1>
+
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">NumPy</span>
+    <span class="tag">pandas</span>
+    <span class="tag">Matplotlib</span>
+    <span class="tag">Jupyter</span>
+    <span class="tag">Ridge Regression</span>
+    <span class="tag">Mini-batch GD</span>
+    <span class="tag">HTRU2</span>
+  </div>
+
+  <hr>
+
+  <div class="body">
+
+    <h2>В чём заключалась задача?</h2>
+    <p>
+      Учебная задача по машинному обучению: по восьми числовым признакам сигнала нужно предсказать,
+      является ли объект кандидатом в пульсары (класс +1) или фоновым шумом (класс −1).
+      Датасет — HTRU2, в нём положительный класс сильно уступает по количеству:
+      константный baseline, всегда предсказывающий «не пульсар», получает около 91% Accuracy,
+      но не находит ни одного объекта положительного класса. Поэтому одной Accuracy недостаточно —
+      качество измеряется по Precision, Recall и F1-score для положительного класса.
+    </p>
+    <p>
+      Основные требования:
+    </p>
+    <ul>
+      <li>- самостоятельная реализация линейных моделей, без готовых классификаторов из библиотек</li>
+      <li>- аналитическое решение Ridge Regression и линейный классификатор на собственном mini-batch градиентном спуске</li>
+      <li>- исследование функций потерь (логистическая, hinge, квадратичная по отступу) и L1/L2-регуляризации</li>
+      <li>- корректная методика на несбалансированных данных: подбор гиперпараметров только по обучающей выборке, тестовая — только для финальной оценки</li>
+    </ul>
+
+    <h2>Что сделано?</h2>
+
+    <h4>1. Подготовка данных</h4>
+    <ul>
+      <li>- загрузка <code>pulsar_stars.csv</code> (HTRU2), приведение целевой переменной к меткам −1 и +1</li>
+      <li>- стратифицированное разбиение на обучающую и тестовую выборки 70/30</li>
+      <li>- стандартизация признаков: обучается только на обучающих данных</li>
+      <li>- добавление свободного коэффициента (bias), который не штрафуется регуляризацией</li>
+    </ul>
+    <p>
+      Во время кросс-валидации стандартизатор для каждого фолда заново подгоняется
+      по соответствующей части обучающей выборки и только затем применяется к validation-части —
+      чтобы информация из validation-фолдов не протекала в обучение.
+    </p>
+
+    <h4>2. Ridge Regression в матричном виде</h4>
+    <p>
+      Коэффициенты находятся аналитически через решение системы линейных уравнений:
+      w = (X<sup>T</sup>X + λI)<sup>−1</sup>X<sup>T</sup>y.
+      В коде используется <code>numpy.linalg.solve</code>, без явного вычисления обратной матрицы.
+      Параметр регуляризации λ подбирается по пятифолдовой кросс-валидации на обучающей части
+      данных, критерий выбора — средний F1-score.
+    </p>
+
+    <h4>3. Линейный классификатор на mini-batch градиентном спуске</h4>
+    <p>
+      Собственная реализация mini-batch градиентного спуска с аналитически вычисляемыми градиентами.
+      Все функции потерь определены через отступ M = y·(w, x), где (w, x) — скалярное произведение:
+    </p>
+    <ul>
+      <li>- логистическая: log(1 + e<sup>−M</sup>)</li>
+      <li>- hinge loss: max(0, 1 − M)</li>
+      <li>- квадратичная по отступу: (1 − M)<sup>2</sup></li>
+    </ul>
+    <p>
+      Также реализованы L1- и L2-регуляризация, которые можно комбинировать (Elastic Net).
+      В итоговой конфигурации градиентного классификатора: логистическая функция потерь,
+      шаг обучения 0.1, число итераций выбирается по F1-score на validation-фолдах
+      внутри обучающей выборки.
+    </p>
+
+    <h2>Методика оценки</h2>
+    <p>
+      Данные разделены на обучающую и тестовую выборки в пропорции 70/30 со стратификацией.
+      Тестовая выборка не используется для выбора гиперпараметров — только для финальной оценки моделей.
+      Используемые метрики:
+    </p>
+    <ul>
+      <li>- <strong>Accuracy</strong> — доля правильных предсказаний</li>
+      <li>- <strong>Precision</strong> — доля настоящих пульсаров среди предсказанных положительными</li>
+      <li>- <strong>Recall</strong> — доля найденных положительных объектов</li>
+      <li>- <strong>F1-score</strong> — гармоническое среднее Precision и Recall</li>
+    </ul>
+    <p>
+      Для сравнения добавлен baseline, всегда предсказывающий отрицательный класс:
+      на несбалансированных данных у него высокая Accuracy, но нулевые Recall и F1-score.
+    </p>
+
+    <h2>Результаты</h2>
+
+    <table class="results-table">
+      <tr>
+        <th>Модель</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>F1-score</th>
+      </tr>
+      <tr>
+        <td>Majority baseline (−1)</td>
+        <td>90,84%</td>
+        <td>0,00%</td>
+        <td>0,00%</td>
+        <td>0,00%</td>
+      </tr>
+      <tr>
+        <td>Ridge Regression</td>
+        <td>97,00%</td>
+        <td><strong>95,34%</strong></td>
+        <td>70,73%</td>
+        <td>81,21%</td>
+      </tr>
+      <tr>
+        <td>Mini-batch GD (log loss)</td>
+        <td><strong>97,26%</strong></td>
+        <td>91,77%</td>
+        <td><strong>77,03%</strong></td>
+        <td><strong>83,76%</strong></td>
+      </tr>
+    </table>
+
+    <p>
+      Лучший F1-score показал классификатор на mini-batch градиентном спуске с логистической
+      функцией потерь: по сравнению с Ridge Regression Recall вырос с 70,73% до 77,03%,
+      а F1-score — с 81,21% до 83,76%. При этом Precision выше у Ridge Regression —
+      среди предсказанных им положительных объектов доля верных больше.
+      Baseline наглядно показывает, почему Accuracy недостаточно: 90,84% Accuracy при
+      нулевом Recall и F1-score.
+    </p>
+    <p>
+      Выбранные параметры в этом запуске: Ridge Regression — λ = 0 (по проверенной сетке
+      кросс-валидации лучший средний F1-score получен без штрафа); mini-batch GD —
+      логистическая функция потерь, learning rate 0.1, 1400 итераций, L1 = 0, L2 = 0.
+      Приведённые значения относятся к конкретному разбиению и запуску ноутбука —
+      при изменении данных или настроек они могут отличаться.
+    </p>
+
+    <h2>Визуализации</h2>
+
+    <figure class="photo">
+      <img src="PulsarTrainingRisk.png" alt="Кривая обучения и качество на validation-фолдах" />
+      <figcaption>Кривая обучения и качество на validation-фолдах</figcaption>
+    </figure>
+    <p>
+      Первый график показывает изменение эмпирического риска во время обучения,
+      второй — среднюю Accuracy градиентного классификатора на validation-фолдах
+      в зависимости от количества итераций. Красная пунктирная линия — средняя
+      CV Accuracy Ridge Regression.
+    </p>
+
+    <figure class="photo">
+      <img src="PulsarRegularizationPaths.png" alt="Пути регуляризации" />
+      <figcaption>Пути регуляризации</figcaption>
+    </figure>
+    <p>
+      Изменение коэффициентов моделей при увеличении силы L1- и L2-регуляризации
+      для логистической, hinge- и квадратичной функций потерь.
+    </p>
+
+    <figure class="photo">
+      <img src="PulsarTestMetrics.png" alt="Сравнение метрик на тестовой выборке" />
+      <figcaption>Сравнение метрик на тестовой выборке</figcaption>
+    </figure>
+    <p>
+      Сравнение Accuracy, Precision, Recall и F1-score для Ridge Regression,
+      mini-batch градиентного классификатора и baseline на отложенной тестовой выборке.
+    </p>
+
+    <h2>Сложности</h2>
+
+    <h4>1. Дисбаланс классов</h4>
+    <p>
+      Положительный класс составляет около 9% данных, поэтому оптимизировать «в лоб»
+      по Accuracy нельзя: baseline с 90,84% Accuracy не находит ни одного пульсара.
+      Основным критерием подбора гиперпараметров сделан F1-score на validation-фолдах,
+      а итоговые модели сравниваются по всем четырём метрикам.
+    </p>
+
+    <h4>2. Честность оценки</h4>
+    <p>
+      Легко незаметно «подглядеть» в тест: например, подогнать стандартизацию по всем данным
+      или подбирать гиперпараметры по тестовой выборке. Здесь стандартизатор обучается только
+      на обучающих данных, внутри кросс-валидации — заново на каждом фолде, а тестовая выборка
+      открывается один раз для финального сравнения моделей.
+    </p>
+
+    <h4>3. Интерпретация λ = 0</h4>
+    <p>
+      Кросс-валидация выбрала для Ridge Regression λ = 0 — лучший средний F1-score на проверенной
+      сетке получил вариант без штрафа. Это результат эксперимента на конкретной сетке и разбиении,
+      а не общий вывод о том, что регуляризация не нужна: при других данных или другой сетке λ
+      выбор может отличаться.
+    </p>
+
+    <h4>4. Ограничения</h4>
+    <p>
+      Шаг обучения, тип функции потерь и коэффициенты регуляризации градиентного классификатора
+      заданы заранее — кросс-валидация выбирает только число итераций, и 1400 — это максимум среди
+      проверенных вариантов, а не гарантия глобально оптимального значения. Это учебная реализация
+      для демонстрации алгоритмов и экспериментов, а не production-пайплайн.
+    </p>
+
+    <h2>Ссылки</h2>
+
+    <p>
+      Репозиторий с кодом:
+      <a href="https://github.com/geolav/linear-methods-pulsar-classification" target="_blank" rel="noopener">github.com/geolav/linear-methods-pulsar-classification</a>
+    </p>
+    <p>
+      Датасет HTRU2 (CC BY 4.0, Robert Lyon):
+      <a href="https://archive.ics.uci.edu/dataset/372/htru2" target="_blank" rel="noopener">UCI Machine Learning Repository</a>
+      ·
+      <a href="https://www.kaggle.com/datasets/pavanraj159/predicting-a-pulsar-star" target="_blank" rel="noopener">Kaggle</a>
+    </p>
+
+  </div>
+
+</article>
+
+<footer>
+  <span>© 2026 Georgiy Lavrentev </span>
+</footer>
+
+</body>
+</html>
